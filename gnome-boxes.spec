@@ -1,3 +1,5 @@
+# TODO
+# - Requires: qemu-kvm is too much (pulls all arches)
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Name:		gnome-boxes
 Version:	3.4.0.1
@@ -33,6 +35,7 @@ Requires:	gtk+3 >= 3.4.0
 Requires:	hicolor-icon-theme
 Requires:	libvirt-utils
 Requires:	qemu-kvm
+Requires:	tracker
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
