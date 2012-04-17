@@ -2,12 +2,12 @@
 # - Requires: qemu-kvm is too much (pulls all arches)
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Name:		gnome-boxes
-Version:	3.4.0.1
+Version:	3.4.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	d33f578a4b3fcfd8f127208c37db5893
+# Source0-md5:	7a9363cfb20fd9a7739015aa4cc79127
 URL:		http://live.gnome.org/Boxes
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -19,7 +19,7 @@ BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk3-vnc-devel >= 0.4.4
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libosinfo-devel >= 0.0.6
+BuildRequires:	libosinfo-devel >= 0.1.1
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libvirt-glib-devel >= 0.0.7
 BuildRequires:	libxml2-devel >= 1:2.7.8
@@ -35,7 +35,7 @@ Requires:	gtk+3 >= 3.4.0
 Requires:	hicolor-icon-theme
 Requires:	libvirt-utils
 Requires:	qemu-kvm
-Requires:	tracker
+Requires:	tracker >= 0.14.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
