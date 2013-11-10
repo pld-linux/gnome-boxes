@@ -3,7 +3,7 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Name:		gnome-boxes
 Version:	3.10.0
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.10/%{name}-%{version}.tar.xz
@@ -92,3 +92,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-boxes
 %{_desktopdir}/gnome-boxes.desktop
 %{_iconsdir}/hicolor/*/*/*.png
+%{_datadir}/appdata/gnome-boxes.appdata.xml
