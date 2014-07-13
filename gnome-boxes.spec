@@ -2,12 +2,12 @@
 # - Requires: qemu is too much (pulls all arches)
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Name:		gnome-boxes
-Version:	3.12.0
+Version:	3.12.3
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	2de9ef5eff85a533406e09131b14c3f7
+# Source0-md5:	016ed5e23005d3f657bf5e2a36a69c5f
 URL:		http://live.gnome.org/Boxes
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
