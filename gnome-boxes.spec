@@ -3,12 +3,12 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	3.16.2
+Version:	3.18.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	546cb2e176ae355a40d4c2f706df2a06
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	746c09d9f6fb4fff170e222389699de7
 URL:		http://live.gnome.org/Boxes
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -20,12 +20,12 @@ BuildRequires:	gtk3-vnc-devel >= 0.4.4
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libarchive-devel >= 3.0.0
 BuildRequires:	libgovirt-devel >= 0.2.0
-BuildRequires:	libosinfo-devel >= 0.2.11
+BuildRequires:	libosinfo-devel >= 0.2.12
 BuildRequires:	libsoup-devel >= 2.38.0
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libusb-devel >= 1.0.9
 BuildRequires:	libuuid-devel >= 1.41.3
-BuildRequires:	libvirt-glib-devel >= 0.2.0
+BuildRequires:	libvirt-glib-devel >= 0.2.2
 BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	pkgconfig >= 1:0.22
 BuildRequires:	spice-gtk-devel >= 0.27
@@ -40,11 +40,11 @@ Requires:	glib2 >= 1:2.38.0
 Requires:	gtk+3 >= 3.13.2
 Requires:	hicolor-icon-theme
 Requires:	libgovirt >= 0.2.0
-Requires:	libosinfo >= 0.2.11
+Requires:	libosinfo >= 0.2.12
 Requires:	libsoup >= 2.38.0
 Requires:	libusb >= 1.0.9
 Requires:	libuuid >= 1.41.3
-Requires:	libvirt-glib >= 0.2.0
+Requires:	libvirt-glib >= 0.2.2
 Requires:	libvirt-utils
 Requires:	libxml2 >= 1:2.7.8
 Requires:	qemu >= 1.3
