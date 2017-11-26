@@ -3,12 +3,12 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	3.18.1
-Release:	2
+Version:	3.26.2
+Release:	1
 License:	LGPL v2
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	746c09d9f6fb4fff170e222389699de7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.26/%{name}-%{version}.tar.xz
+# Source0-md5:	1c55bcaf57234a9b66136c8811e74876
 URL:		http://live.gnome.org/Boxes
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -65,7 +65,6 @@ systemów zdalnych lub wirtualnych.
 %setup -q
 
 %build
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal} -I m4 -I libgd
 %{__autoconf}
