@@ -36,6 +36,7 @@ BuildRequires:	udev-glib-devel >= 1:165
 BuildRequires:	vte-devel >= 0.40.2
 BuildRequires:	vala >= 2:0.24.0.65
 BuildRequires:	vala-gtk3-vnc >= 0.4.4
+BuildRequires:	vala-libvirt-glib >= 3.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
