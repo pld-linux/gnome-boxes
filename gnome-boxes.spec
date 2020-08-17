@@ -38,6 +38,7 @@ BuildRequires:	vala >= 2:0.24.0.65
 BuildRequires:	vala-gtk3-vnc >= 0.4.4
 BuildRequires:	vala-libvirt-glib >= 3.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
+BuildRequires:	vala-vte >= 0.40.2
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.50
