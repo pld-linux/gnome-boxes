@@ -3,12 +3,13 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	3.36.6
+Version:	3.38.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	ca643f81e459c672fc7b0b5671cc9619
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-boxes/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	5757faba4ad7f79940287ecb248e7115
+Patch0:		%{name}-system-libhandy.patch
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
 BuildRequires:	freerdp2-devel >= 2.0
@@ -17,21 +18,22 @@ BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	gtk3-vnc-devel >= 0.4.4
-BuildRequires:	gtk-webkit4-devel
+BuildRequires:	gtk-webkit4-devel >= 2.26.0
+BuildRequires:	gtksourceview4-devel
 BuildRequires:	libarchive-devel >= 3.0.0
+BuildRequires:	libhandy-devel >= 0.0.11
 BuildRequires:	libosinfo-devel >= 1.7.0
 BuildRequires:	libsecret-devel
 BuildRequires:	libsoup-devel >= 2.38.0
 BuildRequires:	libusb-devel >= 1.0.9
-BuildRequires:	libuuid-devel >= 1.41.3
 BuildRequires:	libvirt-glib-devel >= 3.0.0
 BuildRequires:	libxml2-devel >= 1:2.7.8
-BuildRequires:	meson >= 0.49.2
+BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.22
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	spice-gtk-devel >= 0.32
-BuildRequires:	tracker-devel >= 2.0
+BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	udev-glib-devel >= 1:165
 BuildRequires:	vte-devel >= 0.40.2
 BuildRequires:	vala >= 2:0.24.0.65
@@ -45,18 +47,19 @@ Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.50
 Requires:	gtk+3 >= 3.22.20
+Requires:	gtk-webkit4 >= 2.26.0
 Requires:	gtk3-vnc >= 0.4.4
 Requires:	hicolor-icon-theme
+Requires:	libhandy >= 0.0.11
 Requires:	libosinfo >= 1.7.0
 Requires:	libsoup >= 2.38.0
 Requires:	libusb >= 1.0.9
-Requires:	libuuid >= 1.41.3
 Requires:	libvirt-glib >= 3.0.0
 Requires:	libvirt-utils
 Requires:	libxml2 >= 1:2.7.8
 Requires:	qemu >= 1.3
 Requires:	spice-gtk >= 0.32
-Requires:	tracker >= 2.0
+Requires:	tracker3 >= 3.0
 Requires:	udev-glib >= 1:165
 Requires:	vte >= 0.40.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -75,6 +78,7 @@ systemów zdalnych lub wirtualnych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build \
@@ -125,6 +129,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-boxes
 %{_datadir}/gnome-shell/search-providers/org.gnome.Boxes.SearchProvider.ini
 %{_datadir}/metainfo/org.gnome.Boxes.appdata.xml
+# not in osinfo database (yet?)
+%{_datadir}/osinfo/os/gnome.org/gnome-3.38.xml
+%{_datadir}/osinfo/os/gnome.org/gnome-nightly.xml
 %{_desktopdir}/org.gnome.Boxes.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Boxes.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Boxes-symbolic.svg
