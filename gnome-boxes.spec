@@ -3,13 +3,12 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	3.38.2
+Version:	42.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-boxes/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	48d6a7b5b7e01c15bf52156468a2b824
-Patch0:		%{name}-system-libhandy.patch
+Source0:	https://download.gnome.org/sources/gnome-boxes/42/%{name}-%{version}.tar.xz
+# Source0-md5:	73d0be821062a3453571d3dc63300d53
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
 BuildRequires:	freerdp2-devel >= 2.0
@@ -21,12 +20,12 @@ BuildRequires:	gtk3-vnc-devel >= 0.4.4
 BuildRequires:	gtk-webkit4-devel >= 2.26.0
 BuildRequires:	gtksourceview4-devel
 BuildRequires:	libarchive-devel >= 3.0.0
-BuildRequires:	libhandy-devel >= 0.0.11
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libosinfo-devel >= 1.7.0
 BuildRequires:	libsecret-devel
 BuildRequires:	libsoup-devel >= 2.38.0
 BuildRequires:	libusb-devel >= 1.0.9
-BuildRequires:	libvirt-glib-devel >= 3.0.0
+BuildRequires:	libvirt-glib-devel >= 4.0.0
 BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
@@ -39,10 +38,11 @@ BuildRequires:	vte-devel >= 0.40.2
 BuildRequires:	vala >= 2:0.24.0.65
 BuildRequires:	vala-gtk3-vnc >= 0.4.4
 BuildRequires:	vala-gtksourceview4
+BuildRequires:	vala-libhandy1 >= 1.5.0
 BuildRequires:	vala-libosinfo
-BuildRequires:	vala-libvirt-glib >= 3.0.0
+BuildRequires:	vala-libvirt-glib >= 4.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
-BuildRequires:	vala-tracker3
+BuildRequires:	vala-tracker3 >= 3.0
 BuildRequires:	vala-vte >= 0.40.2
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
@@ -53,11 +53,11 @@ Requires:	gtk+3 >= 3.22.20
 Requires:	gtk-webkit4 >= 2.26.0
 Requires:	gtk3-vnc >= 0.4.4
 Requires:	hicolor-icon-theme
-Requires:	libhandy >= 0.0.11
+Requires:	libhandy1 >= 1.5.0
 Requires:	libosinfo >= 1.7.0
 Requires:	libsoup >= 2.38.0
 Requires:	libusb >= 1.0.9
-Requires:	libvirt-glib >= 3.0.0
+Requires:	libvirt-glib >= 4.0.0
 Requires:	libvirt-utils
 Requires:	libxml2 >= 1:2.7.8
 Requires:	qemu >= 1.3
@@ -81,12 +81,12 @@ systemów zdalnych lub wirtualnych.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %meson build \
 	-Ddistributor_name='pld-linux' \
-	-Ddistributor_version='%{pld_release}'
+	-Ddistributor_version='%{pld_release}' \
+	-Drdp=true
 
 %ninja_build -C build
 
@@ -117,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README.logos README.md THANKS copyright
+%doc NEWS README.logos README.md copyright
 %attr(755,root,root) %{_bindir}/gnome-boxes
 %dir %{_libdir}/gnome-boxes
 %attr(755,root,root) %{_libdir}/gnome-boxes/libgovf-0.1.so
