@@ -3,31 +3,28 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	42.3
+Version:	43.4
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-boxes/42/%{name}-%{version}.tar.xz
-# Source0-md5:	4df7e2fdbd7db03f2e82b74eecedcf0b
+Source0:	https://download.gnome.org/sources/gnome-boxes/43/%{name}-%{version}.tar.xz
+# Source0-md5:	2c605a999ff6c41bb2f0c5715bb88bb7
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
-BuildRequires:	freerdp2-devel >= 2.0
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk+3-devel >= 3.22.20
-BuildRequires:	gtk3-vnc-devel >= 0.4.4
-BuildRequires:	gtk-webkit4-devel >= 2.26.0
-BuildRequires:	gtksourceview4-devel
+BuildRequires:	gtk-webkit4.1-devel >= 2.36.0
 BuildRequires:	libarchive-devel >= 3.0.0
 BuildRequires:	libhandy1-devel >= 1.5.0
-BuildRequires:	libosinfo-devel >= 1.7.0
+BuildRequires:	libosinfo-devel >= 1.10.0
 BuildRequires:	libsecret-devel
-BuildRequires:	libsoup-devel >= 2.38.0
+BuildRequires:	libsoup3-devel >= 3.0.0
 BuildRequires:	libusb-devel >= 1.0.9
 BuildRequires:	libvirt-glib-devel >= 4.0.0
 BuildRequires:	libxml2-devel >= 1:2.7.8
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.22
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -36,10 +33,8 @@ BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	udev-glib-devel >= 1:165
 BuildRequires:	vte-devel >= 0.40.2
 BuildRequires:	vala >= 2:0.24.0.65
-BuildRequires:	vala-gtk3-vnc >= 0.4.4
-BuildRequires:	vala-gtksourceview4
 BuildRequires:	vala-libhandy1 >= 1.5.0
-BuildRequires:	vala-libosinfo
+BuildRequires:	vala-libosinfo >= 1.10.0
 BuildRequires:	vala-libvirt-glib >= 4.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
 BuildRequires:	vala-tracker3 >= 3.0
@@ -50,12 +45,12 @@ Requires(post,postun):	glib2 >= 1:2.50
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.50
 Requires:	gtk+3 >= 3.22.20
-Requires:	gtk-webkit4 >= 2.26.0
-Requires:	gtk3-vnc >= 0.4.4
+Requires:	gtk-webkit4.1 >= 2.36.0
 Requires:	hicolor-icon-theme
+Requires:	libarchive >= 3.0.0
 Requires:	libhandy1 >= 1.5.0
-Requires:	libosinfo >= 1.7.0
-Requires:	libsoup >= 2.38.0
+Requires:	libosinfo >= 1.10.0
+Requires:	libsoup3 >= 3.0.0
 Requires:	libusb >= 1.0.9
 Requires:	libvirt-glib >= 4.0.0
 Requires:	libvirt-utils
@@ -69,7 +64,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # private libraries
 %define		_noautoprovfiles	%{_libdir}/gnome-boxes
-%define		_noautoreq		libgovf-0.1.so libgtk-frdp-0.1.so
+%define		_noautoreq		libgovf-0.1.so
 
 %description
 gnome-boxes is a simple GNOME 3 application to access remote or
@@ -85,8 +80,7 @@ systemów zdalnych lub wirtualnych.
 %build
 %meson build \
 	-Ddistributor_name='pld-linux' \
-	-Ddistributor_version='%{pld_release}' \
-	-Drdp=true
+	-Ddistributor_version='%{pld_release}'
 
 %ninja_build -C build
 
@@ -96,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 # imported subprojects, not for external use
-%{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-boxes/{govf,gtk-frdp}
+%{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-boxes/govf
 %{__rm} -r $RPM_BUILD_ROOT%{_libdir}/gnome-boxes/pkgconfig
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gnome-boxes/gir-1.0
 
@@ -117,14 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc NEWS README.logos README.md copyright
+%doc NEWS README.md copyright
 %attr(755,root,root) %{_bindir}/gnome-boxes
 %dir %{_libdir}/gnome-boxes
 %attr(755,root,root) %{_libdir}/gnome-boxes/libgovf-0.1.so
-%attr(755,root,root) %{_libdir}/gnome-boxes/libgtk-frdp-0.1.so
 %dir %{_libdir}/gnome-boxes/girepository-1.0
 %{_libdir}/gnome-boxes/girepository-1.0/Govf-0.1.typelib
-%{_libdir}/gnome-boxes/girepository-1.0/GtkFrdp-0.1.typelib
 %attr(755,root,root) %{_libexecdir}/gnome-boxes-search-provider
 %{_datadir}/dbus-1/services/org.gnome.Boxes.service
 %{_datadir}/dbus-1/services/org.gnome.Boxes.SearchProvider.service
