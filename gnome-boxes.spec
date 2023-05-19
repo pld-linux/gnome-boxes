@@ -4,7 +4,7 @@ Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
 Version:	43.4
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-boxes/43/%{name}-%{version}.tar.xz
@@ -93,6 +93,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-boxes/govf
 %{__rm} -r $RPM_BUILD_ROOT%{_libdir}/gnome-boxes/pkgconfig
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gnome-boxes/gir-1.0
+
+# not supported by glibc (as of 2.37)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name} --with-gnome
 
