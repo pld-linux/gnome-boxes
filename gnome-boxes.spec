@@ -3,12 +3,12 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	44.3
+Version:	45.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-boxes/44/%{name}-%{version}.tar.xz
-# Source0-md5:	06bc2e8a3d4f3fcc27b90718439d1818
+Source0:	https://download.gnome.org/sources/gnome-boxes/45/%{name}-%{version}.tar.xz
+# Source0-md5:	6b216b52571f3cb36ad0cea8ee69ef5a
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
 BuildRequires:	gettext-tools
