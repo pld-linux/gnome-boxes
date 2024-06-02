@@ -3,12 +3,12 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	45.0
+Version:	46.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-boxes/45/%{name}-%{version}.tar.xz
-# Source0-md5:	6b216b52571f3cb36ad0cea8ee69ef5a
+Source0:	https://download.gnome.org/sources/gnome-boxes/46/%{name}-%{version}.tar.xz
+# Source0-md5:	857a73617c7ddd88ddadfaaa42c2bda9
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
 BuildRequires:	gettext-tools
@@ -19,10 +19,12 @@ BuildRequires:	gtk-webkit4.1-devel >= 2.36.0
 BuildRequires:	libarchive-devel >= 3.0.0
 BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libosinfo-devel >= 1.10.0
+BuildRequires:	libportal-devel >= 0.7
+BuildRequires:	libportal-gtk3-devel >= 0.7
 BuildRequires:	libsecret-devel
 BuildRequires:	libsoup3-devel >= 3.0.0
 BuildRequires:	libusb-devel >= 1.0.9
-BuildRequires:	libvirt-glib-devel >= 4.0.0
+BuildRequires:	libvirt-glib-devel >= 5.0.0
 BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
@@ -35,7 +37,9 @@ BuildRequires:	vte-devel >= 0.40.2
 BuildRequires:	vala >= 2:0.24.0.65
 BuildRequires:	vala-libhandy1 >= 1.5.0
 BuildRequires:	vala-libosinfo >= 1.10.0
-BuildRequires:	vala-libvirt-glib >= 4.0.0
+BuildRequires:	vala-libportal >= 0.7
+BuildRequires:	vala-libportal-gtk3 >= 0.7
+BuildRequires:	vala-libvirt-glib >= 5.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
 BuildRequires:	vala-tracker3 >= 3.0
 BuildRequires:	vala-vte >= 0.40.2
@@ -50,9 +54,11 @@ Requires:	hicolor-icon-theme
 Requires:	libarchive >= 3.0.0
 Requires:	libhandy1 >= 1.5.0
 Requires:	libosinfo >= 1.10.0
+Requires:	libportal >= 0.7
+Requires:	libportal-gtk3 >= 0.7
 Requires:	libsoup3 >= 3.0.0
 Requires:	libusb >= 1.0.9
-Requires:	libvirt-glib >= 4.0.0
+Requires:	libvirt-glib >= 5.0.0
 Requires:	libvirt-utils
 Requires:	libxml2 >= 1:2.7.8
 Requires:	qemu >= 1.3
@@ -94,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{_libdir}/gnome-boxes/pkgconfig
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gnome-boxes/gir-1.0
 
-# not supported by glibc (as of 2.37)
+# not supported by glibc (as of 2.39)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name} --with-gnome
