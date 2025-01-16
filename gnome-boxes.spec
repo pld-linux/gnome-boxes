@@ -9,6 +9,7 @@ License:	LGPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-boxes/47/%{name}-%{version}.tar.xz
 # Source0-md5:	559cebd172058d60f83dc180c4a6dcd6
+Patch0:		no-cache-update.patch
 URL:		https://wiki.gnome.org/Apps/Boxes
 BuildRequires:	appstream-glib
 BuildRequires:	gettext-tools
@@ -82,6 +83,7 @@ systemów zdalnych lub wirtualnych.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 %build
 %meson build \
