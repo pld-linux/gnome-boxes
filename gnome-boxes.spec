@@ -3,15 +3,15 @@
 Summary:	A simple GNOME 3 application to access remote or virtual systems
 Summary(pl.UTF-8):	Prosta aplikacja GNOME 3 do dostępu do systemów zdalnych lub wirtualnych
 Name:		gnome-boxes
-Version:	47.0
+Version:	48.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-boxes/47/%{name}-%{version}.tar.xz
-# Source0-md5:	559cebd172058d60f83dc180c4a6dcd6
+Source0:	https://download.gnome.org/sources/gnome-boxes/48/%{name}-%{version}.tar.xz
+# Source0-md5:	2436442ab2e7b0688338cb41cc8267ea
 Patch0:		no-cache-update.patch
-URL:		https://wiki.gnome.org/Apps/Boxes
-BuildRequires:	appstream-glib
+URL:		https://apps.gnome.org/Boxes/
+BuildRequires:	AppStream
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.50
 BuildRequires:	gobject-introspection-devel >= 0.10.0
@@ -30,8 +30,9 @@ BuildRequires:	libxml2-devel >= 1:2.7.8
 BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.22
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	spice-gtk-devel >= 0.32
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	tracker3-devel >= 3.0
 BuildRequires:	udev-glib-devel >= 1:165
 BuildRequires:	vte-devel >= 0.40.2
@@ -44,6 +45,7 @@ BuildRequires:	vala-libvirt-glib >= 5.0.0
 BuildRequires:	vala-spice-gtk >= 0.32
 BuildRequires:	vala-tracker3 >= 3.0
 BuildRequires:	vala-vte >= 0.40.2
+BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.50
@@ -86,16 +88,16 @@ systemów zdalnych lub wirtualnych.
 %patch -P 0 -p1
 
 %build
-%meson build \
+%meson \
 	-Ddistributor_name='pld-linux' \
 	-Ddistributor_version='%{pld_release}'
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 # imported subprojects, not for external use
 %{__rm} -r $RPM_BUILD_ROOT%{_includedir}/gnome-boxes/govf
